@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Card Slider</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    .card-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background-color: #386a70;
+      margin: 2px;
+      position: relative;
+    }
+
+    .card {
+      box-shadow: 0 4px 8px 0 rgba(188, 49, 49, 0.2);
+      transition: 0.3s;
+      width: 100%;
+      max-width: 300px;
+      margin: 20px;
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+    }
+
+    .container {
+      padding: 2px 16px;
+      background-color: #ffffff;
+    }
+
+    .name {
+      font-family: sans-serif;
+      font-size: 20px;
+      margin-bottom: 30px;
+      background: #0ba5b7;
+      color: #000000;
+      opacity: 0.8;
+      padding: 5px 0 5px 15px;
+    }
+
+    .container p {
+      font-size: 16px;
+      font-style: italic;
+      font-family: serif;
+    }
+
+    button {
+      text-align: center;
+      align-items: center;
+      border: none;
+      font-size: 16px;
+      padding: 8px 16px;
+      background-color: #4CAF50;
+      border-radius: 6px;
+      margin: 14px;
+      color: #000000;
+    }
+
+    .button:hover {
+      background-color: #4CAF50;
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        max-width: 100%;
+      }
+    }
+
+    /* Slider Styles */
+    .slider {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      display: flex;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      position: relative;
+    }
+
+    .slider::-webkit-scrollbar {
+      display: none;
+    }
+
+    .slider .card {
+      flex: 0 0 300px;
+      margin: 20px 10px;
+      scroll-snap-align: start;
+    }
+
+    .slider-line {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 4px;
+      background-color: #0ba5b7;
+      transition: width 0.3s ease-in-out;
+    }
+
+    @media (max-width: 768px) {
+      .slider .card {
+        flex: 0 0 250px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .slider .card {
+        flex: 0 0 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card-content">
+    <div class="slider">
+      <div class="card">
+        <img src="./assets/img/vidcamera.jpg" alt="Avatar">
+        <div class="container">
+          <h4 class="name">Wedding Photography</h4>
+          <p>Memorable Wedding shoot with experienced crew members and also with Hightech and newly upgraded Cameras of sony and Nikon.</p>
+          <button class="btn"><i class="fa fa-phone"> Contact Now</i></button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="./assets/img/vidcamera.jpg" alt="Avatar">
+        <div class="container">
+          <h4 class="name">Wedding Photography</h4>
+          <p>Memorable Wedding shoot with experienced crew members and also with Hightech and newly upgraded Cameras of sony and Nikon.</p>
+          <button class="btn"><i class="fa-solid fa-phone">Contact Now</i></button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="./assets/img/vidcamera.jpg" alt="Avatar">
+        <div class="container">
+          <h4 class="name">Wedding Photography</h4>
+          <p>Memorable Wedding shoot with experienced crew members and also with Hightech and newly upgraded Cameras of sony and Nikon.</p>
+          <button class="btn"><i class="fa-solid fa-phone">Contact Now</i></button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="./assets/img/vidcamera.jpg" alt="Avatar">
+        <div class="container">
+          <h4 class="name">Wedding Photography</h4>
+          <p>Memorable Wedding shoot with experienced crew members and also with Hightech and newly upgraded Cameras of sony and Nikon.</p>
+          <button class="btn"><i class="fa-solid fa-phone">Contact Now</i></button>
+        </div>
+      </div>
+    </div>
+    <div class="slider-line"></div>
+  </div>
+
+  <script>
+    const slider = document.querySelector('.slider');
+    const sliderLine = document.querySelector('.slider-line');
+
+    slider.addEventListener('scroll', () => {
+      const scrollLeft = slider.scrollLeft;
+      const scrollWidth = slider.scrollWidth - slider.clientWidth;
+      const progress = (scrollLeft / scrollWidth) * 100;
+      sliderLine.style.width = `${progress}%`;
+    });
+  </script>
+</body>
+</html>
